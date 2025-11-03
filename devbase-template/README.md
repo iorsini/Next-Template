@@ -1,3 +1,13 @@
+## ⚡ 5-Minute Setup
+
+1. `npm install`
+2. Copy `.env.example` to `.env.local`
+3. Add your MongoDB URI (or use MongoDB Atlas free tier)
+4. Generate NEXTAUTH_SECRET: `openssl rand -base64 32`
+5. `npm run dev`
+
+✅ Done! Login with email or OAuth
+
 # 🚀 DevBase Template
 
 > A modern, production-ready Next.js starter template with authentication, user management, and beautiful UI.
