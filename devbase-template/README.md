@@ -1,199 +1,173 @@
 # 🚀 DevBase Template
 
-A complete, production-ready Next.js starter template with authentication, user management, and modern UI.
+> A modern, production-ready Next.js starter template with authentication, user management, and beautiful UI.
+
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
+![React](https://img.shields.io/badge/React-18-blue?style=flat-square&logo=react)
+![MongoDB](https://img.shields.io/badge/MongoDB-6-green?style=flat-square&logo=mongodb)
+![Tailwind](https://img.shields.io/badge/Tailwind-3-38bdf8?style=flat-square&logo=tailwindcss)
 
 ## ✨ Features
 
-### Authentication
-- 🔐 Email/Password authentication with bcrypt
-- 🔑 OAuth integration (GitHub & Google)
-- 🔄 Session management with NextAuth.js
-- 🛡️ Protected routes with middleware
+### 🔐 Authentication
+- ✅ Email/Password with bcrypt
+- ✅ OAuth (GitHub & Google)
+- ✅ Session management
+- ✅ Protected routes
+- ✅ Password reset ready
 
-### User Management
-- 👤 User profile with avatar upload (Cloudinary)
-- ⚙️ Account settings (name, email, password)
-- 🗑️ Account deletion
-- 📧 Email uniqueness validation
+### 👤 User Management
+- ✅ Profile with avatar upload
+- ✅ Account settings
+- ✅ Password change
+- ✅ Account deletion
+- ✅ Email validation
 
-### UI/UX
-- 🎨 Modern, responsive design with Tailwind CSS
-- 🌙 Dark theme optimized
-- 📱 Mobile-first approach
-- ♿ Accessible components
-- 🎭 Loading states and error handling
-- ✨ Smooth animations and transitions
+### 🎨 UI/UX
+- ✅ Modern, responsive design
+- ✅ Dark theme optimized
+- ✅ Mobile-first
+- ✅ Accessible components
+- ✅ Loading states
+- ✅ Smooth animations
 
-### Developer Experience
-- 📦 Clean, modular code structure
-- 🔧 Reusable UI components
-- 📝 TypeScript-ready
-- 🚀 API Routes for backend logic
-- 🔄 Hot reload in development
+### 🛠️ Developer Experience
+- ✅ Clean code structure
+- ✅ Reusable components
+- ✅ TypeScript ready
+- ✅ Hot reload
+- ✅ Easy configuration
 
-## 🛠️ Tech Stack
+## 🚀 Quick Start
 
-- **Framework:** Next.js 16
-- **UI:** React 18, Tailwind CSS
-- **Authentication:** NextAuth.js
-- **Database:** MongoDB with Mongoose
-- **File Upload:** Cloudinary
-- **Icons:** Lucide React
-
-## 📋 Prerequisites
-
-- Node.js 20.9.0 or higher
-- MongoDB instance (local or Atlas)
-- Cloudinary account (for avatar uploads)
-- GitHub OAuth app (optional)
-- Google OAuth app (optional)
-
-## 🚀 Getting Started
-
-### 1. Clone the repository
+### Option 1: Automated Setup (Recommended)
 
 ```bash
-git clone <your-repo-url>
-cd devbase-template
-```
+# Clone the repository
+git clone https://github.com/yourusername/devbase-template.git my-app
+cd my-app
 
-### 2. Install dependencies
+# Run setup script
+node scripts/setup.js
 
-```bash
+# Install dependencies
 npm install
-```
 
-### 3. Set up environment variables
-
-Copy `.env.example` to `.env.local`:
-
-```bash
-cp .env.example .env.local
-```
-
-Fill in your environment variables:
-
-```env
-# MongoDB
-MONGODB_URI=mongodb://localhost:27017/devbase-template
-
-# NextAuth
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=generate-with-openssl-rand-base64-32
-
-# OAuth (optional)
-GITHUB_ID=your-github-client-id
-GITHUB_SECRET=your-github-client-secret
-GOOGLE_CLIENT_ID=your-google-client-id
-GOOGLE_CLIENT_SECRET=your-google-client-secret
-
-# Cloudinary
-CLOUDINARY_CLOUD_NAME=your-cloud-name
-CLOUDINARY_API_KEY=your-api-key
-CLOUDINARY_API_SECRET=your-api-secret
-```
-
-### 4. Generate NextAuth Secret
-
-```bash
-openssl rand -base64 32
-```
-
-### 5. Run the development server
-
-```bash
+# Start development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+### Option 2: Manual Setup
 
-## 📁 Project Structure
+```bash
+# Clone and install
+git clone https://github.com/yourusername/devbase-template.git my-app
+cd my-app
+npm install
+
+# Copy environment variables
+cp .env.example .env.local
+
+# Edit .env.local with your values
+# Generate NEXTAUTH_SECRET with:
+openssl rand -base64 32
+
+# Start development
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000)
+
+## 📦 Configuration
+
+### App Configuration
+
+Edit `config/app.config.js` to customize:
+
+```javascript
+export const appConfig = {
+  name: "Your App Name",
+  description: "Your app description",
+  colors: {
+    primary: "#0B111c",
+    secondary: "#1e2939",
+    accent: "#00c951",
+  },
+  // ... more options
+};
+```
+
+### Enable/Disable Features
+
+```javascript
+features: {
+  auth: {
+    credentials: true,      // Email/password
+    github: true,           // GitHub OAuth
+    google: true,           // Google OAuth
+  },
+  profile: {
+    avatarUpload: true,     // Avatar upload
+    accountDeletion: true,  // Delete account
+  },
+}
+```
+
+## 🔑 Environment Variables
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `NEXTAUTH_SECRET` | ✅ | Authentication secret (generate with `openssl rand -base64 32`) |
+| `NEXTAUTH_URL` | ✅ | Your app URL (http://localhost:3000 in dev) |
+| `MONGODB_URI` | ✅ | MongoDB connection string |
+| `GITHUB_ID` | ⚠️ | GitHub OAuth Client ID (optional) |
+| `GITHUB_SECRET` | ⚠️ | GitHub OAuth Secret (optional) |
+| `GOOGLE_CLIENT_ID` | ⚠️ | Google OAuth Client ID (optional) |
+| `GOOGLE_CLIENT_SECRET` | ⚠️ | Google OAuth Secret (optional) |
+| `CLOUDINARY_CLOUD_NAME` | ⚠️ | Cloudinary cloud name (optional) |
+| `CLOUDINARY_API_KEY` | ⚠️ | Cloudinary API key (optional) |
+| `CLOUDINARY_API_SECRET` | ⚠️ | Cloudinary API secret (optional) |
+
+⚠️ = Optional, ✅ = Required
+
+## 🗂️ Project Structure
 
 ```
 devbase-template/
+├── config/                 # App configuration
+│   └── app.config.js
+├── public/                 # Static files
+├── scripts/               # Setup scripts
+│   └── setup.js
 ├── src/
 │   ├── app/
-│   │   ├── (auth)/           # Authentication pages
+│   │   ├── (auth)/        # Auth pages
 │   │   │   ├── login/
 │   │   │   └── register/
-│   │   ├── dashboard/         # Protected pages
+│   │   ├── dashboard/     # Protected pages
 │   │   │   ├── home/
 │   │   │   ├── profile/
 │   │   │   ├── settings/
 │   │   │   └── about/
-│   │   ├── api/              # API routes
+│   │   ├── api/           # API routes
 │   │   │   ├── auth/
 │   │   │   └── users/
 │   │   ├── layout.js
 │   │   ├── page.js
 │   │   └── providers.js
 │   ├── components/
-│   │   ├── auth/             # Auth forms
-│   │   ├── profile/          # Profile components
-│   │   └── ui/               # Reusable UI components
-│   ├── lib/                  # Utilities
+│   │   ├── auth/          # Auth components
+│   │   ├── profile/       # Profile components
+│   │   └── ui/            # Reusable UI
+│   ├── lib/               # Utilities
 │   │   ├── mongodb.js
-│   │   ├── mongodbClient.js
 │   │   └── cloudinary.js
-│   └── models/               # MongoDB models
+│   └── models/            # Database models
 │       └── User.js
-├── public/                   # Static files
-├── middleware.js             # Route protection
-└── tailwind.config.js
+├── .env.example           # Environment template
+├── .env.local            # Your environment (not in git)
+└── README.md
 ```
-
-## 🔧 Configuration
-
-### MongoDB Setup
-
-**Local MongoDB:**
-```env
-MONGODB_URI=mongodb://localhost:27017/devbase-template
-```
-
-**MongoDB Atlas:**
-1. Create a cluster at [mongodb.com/atlas](https://www.mongodb.com/atlas)
-2. Get your connection string
-3. Replace `<password>` with your database password
-```env
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/dbname
-```
-
-### OAuth Setup
-
-**GitHub OAuth:**
-1. Go to [GitHub Settings > Developer Settings](https://github.com/settings/developers)
-2. Create a new OAuth App
-3. Set Homepage URL: `http://localhost:3000`
-4. Set Authorization callback URL: `http://localhost:3000/api/auth/callback/github`
-5. Copy Client ID and generate Client Secret
-
-**Google OAuth:**
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project
-3. Enable Google+ API
-4. Create OAuth 2.0 credentials
-5. Add authorized redirect URI: `http://localhost:3000/api/auth/callback/google`
-
-### Cloudinary Setup
-
-1. Sign up at [cloudinary.com](https://cloudinary.com/)
-2. Go to Dashboard
-3. Copy Cloud Name, API Key, and API Secret
-
-## 📝 API Routes
-
-### Authentication
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/logout` - Logout user
-- `GET/POST /api/auth/[...nextauth]` - NextAuth endpoints
-
-### User Management
-- `GET /api/users/me` - Get current user
-- `PUT /api/users/me` - Update user profile
-- `DELETE /api/users/me` - Delete user account
-- `POST /api/users/me/avatar` - Upload avatar
-- `DELETE /api/users/me/avatar` - Remove avatar
 
 ## 🎨 Customization
 
@@ -212,73 +186,75 @@ colors: {
 ### Components
 
 All UI components are in `src/components/ui/`:
-- `Button.jsx` - Button with variants
-- `Input.jsx` - Input with icons
+- `Button.jsx` - Buttons with variants
+- `Input.jsx` - Form inputs
 - `Alert.jsx` - Alert messages
-- `LoadingSpinner.jsx` - Loading indicator
-- `Textarea.jsx` - Textarea input
-- `AlertModal.jsx` - Modal for alerts
-- `ConfirmModal.jsx` - Confirmation modal
+- `LoadingSpinner.jsx` - Loading states
+- And more...
 
-## 🔒 Security Features
-
-- Password hashing with bcrypt
-- Protected routes with middleware
-- Session-based authentication
-- CSRF protection
-- XSS prevention
-- SQL injection prevention (NoSQL)
-
-## 📱 Responsive Design
-
-The template is fully responsive:
-- Mobile: < 768px
-- Tablet: 768px - 1024px
-- Desktop: > 1024px
-
-## 🚀 Deployment
+## 🚢 Deployment
 
 ### Vercel (Recommended)
 
-1. Push your code to GitHub
-2. Import project in [Vercel](https://vercel.com)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/devbase-template)
+
+1. Push to GitHub
+2. Import in Vercel
 3. Add environment variables
 4. Deploy!
 
 ### Other Platforms
 
-The app can be deployed to:
-- Railway
-- Render
-- DigitalOcean App Platform
-- AWS Amplify
-- Netlify (with serverless functions)
+- **Railway**: `railway up`
+- **Render**: Connect GitHub repo
+- **DigitalOcean**: App Platform
+- **AWS**: Amplify
+
+## 📚 Documentation
+
+- [Next.js Docs](https://nextjs.org/docs)
+- [NextAuth.js Docs](https://next-auth.js.org/)
+- [MongoDB Docs](https://docs.mongodb.com/)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+
+## 🧪 Testing
+
+```bash
+# Run tests (coming soon)
+npm test
+
+# Run linter
+npm run lint
+
+# Build for production
+npm run build
+```
 
 ## 🤝 Contributing
 
 1. Fork the project
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+MIT License - see [LICENSE](LICENSE) file
 
-## 🙏 Acknowledgments
+## 🙏 Support
 
-- Next.js team for the amazing framework
-- Vercel for hosting
-- Tailwind CSS for the utility-first CSS framework
-- NextAuth.js for authentication
-- MongoDB for the database
-- Cloudinary for image hosting
+- ⭐ Star the project
+- 🐛 Report bugs
+- 💡 Request features
+- 📖 Improve documentation
 
-## 📧 Support
+## 📧 Contact
 
-If you have any questions or need help, please open an issue or contact the maintainer.
+Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
+
+Project Link: [https://github.com/yourusername/devbase-template](https://github.com/yourusername/devbase-template)
 
 ---
 
-Made with ❤️ by Isadora
+Made with ❤️ by Isadora (https://github.com/iorsini)
